@@ -1,0 +1,15 @@
+{
+    "name": "alsace/form-generator",
+    "description": "Un package pour generer des formulaires",
+    "autoload": {
+        "psr-4": {
+            "Alsace\\FormGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alsace7004"
+        }
+    ],
+    "require": {}
+}
