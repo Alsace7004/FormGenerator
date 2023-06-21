@@ -2,10 +2,9 @@
 
 namespace Alsace\FormGenerator\config;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
+use Illuminate\Console\GeneratorCommand;
 
-class GenerateFile extends Command
+class GenerateFile extends GeneratorCommand
 {
     
     /**
@@ -13,35 +12,52 @@ class GenerateFile extends Command
      *
      * @var string
      */
-    protected $signature = 'make:repo {file_name}';
+    protected $signature = 'make:repo {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Generate repo files';
-    
-    private function createFile($name, $address){
-        $createfile = fopen($address.'/'.$name, 'x');
+    protected $description = 'Create a repo file in app\src folder';
+    protected $type = 'Repo file';
+
+    protected function getNameInput()
+    {
+        return str_replace('.', '/', trim($this->argument('name')));
     }
     /**
-     * Execute the console command.
+     * Build the class with the given name.
+     *
+     * @param  string  $name
+     * @return string
      */
-    public function handle()
+    protected function buildClass($name)
     {
-        //
+        $stub = parent::buildClass($name);
 
-        $file_name = $this->argument('file_name');
-        $path = "app/src/";
-        $full_file_name = $file_name."."."php";
-        
-        //verify if directory exist or not and then create it
-        if(!File::exists($path)) {
-            File::makeDirectory($path, 0777, true); //creates directory
-        }
-        $this->createFile($full_file_name,$path); //create the file by the way
- 
-        echo "Le fichier {$full_file_name} a été créer dans le dossier {$path}  ";
+        return  $stub;
     }
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
+        $filename = dirname(__DIR__,2).DIRECTORY_SEPARATOR."boilerplates".DIRECTORY_SEPARATOR."form.stub";
+        return  $filename;
+    }
+    /**
+     * Get the default namespace for the class.
+     *
+     * @param  string  $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace.'\Src';
+    }
+
+    
 }
