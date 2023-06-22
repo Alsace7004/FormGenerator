@@ -12,6 +12,8 @@
                     GenerateFile::class
                 ]);
             }
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+            $this->loadViewsFrom(__DIR__.'/../views','FormGenerator');
         }
 
         /* public function register(){
