@@ -17,9 +17,6 @@
         <style>
             /*relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white*/
             /*Hex codes: Forest Green #2C5F2D, Moss Green #97BC62*/
-            body{
-            
-            }
             .sidebar{
                 position: fixed;
                 top: 0;
@@ -64,7 +61,7 @@
         </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
-    <body class="antialiasedes">
+    <body class="antialiased">
         <div class="">
             {{-- sidebar begin here --}}
             <div class="sidebar">
@@ -90,14 +87,27 @@
             <div class="content">
                 <div class="main">
                     <h4>welcome on FormBuilder</h4><br>
-                    <h5>{{$my_message}}</h5>
-            
-                    <div style="">
+                    {{-- <h5>{{$my_message}}</h5> --}}
+                   
+                    
+                    <div class="container">
+                        <h5></h5>
+                        <div class="mb-3" style="border:1px solid #eeeeee">
+                            {{$firstnameFieldLabel->render()}}
+                            {{($firstnameField->render())}}
+                        </div> 
+                        <div class="mb-3" style="border:1px solid #eeeeee">
+                            {{$lastnameFieldLabel->render()}}
+                            {{($lastnameField->render())}}
+                        </div> 
+                        <div class="col-auto">
+                            {{($SubmitButton->render())}}
+                        </div>
                         {{-- <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div> --}}
-                        <div class="mb-3">
+                        </div>  --}}
+                        {{-- <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nom</label>
                             <x-FormGenerator-input 
                                 type="text" 
@@ -134,7 +144,7 @@
                             <x-FormGenerator-button type="submit" class="btn btn-primary mb-3">
                                 Ajouter
                             </x-FormGenerator-button>
-                        </div>
+                        </div> --}}
                         
                         {{-- form end here --}}
                     </div>
