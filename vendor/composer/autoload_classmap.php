@@ -6,5 +6,12 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Alsace\\FormGenerator\\Components\\DataGrid' => $baseDir . '/src/Components/DataGrid.php',
+    'Alsace\\FormGenerator\\Components\\PageBuilder' => $baseDir . '/src/Components/PageBuilder.php',
+    'Alsace\\FormGenerator\\Components\\Tag' => $baseDir . '/src/Components/Tag.php',
+    'Alsace\\FormGenerator\\Components\\Test' => $baseDir . '/src/Components/Test.php',
+    'Alsace\\FormGenerator\\Controllers\\FormBuilderController' => $baseDir . '/src/Controllers/FormBuilderController.php',
+    'Alsace\\FormGenerator\\Providers\\FormGeneratorServiceProvider' => $baseDir . '/src/Providers/FormGeneratorServiceProvider.php',
+    'Alsace\\FormGenerator\\config\\GenerateFile' => $baseDir . '/src/config/GenerateFile.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

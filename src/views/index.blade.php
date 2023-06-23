@@ -86,13 +86,19 @@
             {{-- sidebar end here --}}
             <div class="content">
                 <div class="main">
-                    <h4>welcome on FormBuilder</h4><br>
+                    <h4>welcome on Form{{-- on FormBuilder --}}</h4><br>
                     {{-- <h5>{{$my_message}}</h5> --}}
-                   
+                    <div>
+                        @php
+                           $email = myowntest();
+                        @endphp
+                        {{$email}}
+                         
+                    </div>
                     
                     <div class="container">
                         <h5></h5>
-                        <div class="mb-3" style="border:1px solid #eeeeee">
+                        {{-- <div class="mb-3" style="border:1px solid #eeeeee">
                             {{$firstnameFieldLabel->render()}}
                             {{($firstnameField->render())}}
                         </div> 
@@ -102,49 +108,13 @@
                         </div> 
                         <div class="col-auto">
                             {{($SubmitButton->render())}}
-                        </div>
-                        {{-- <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div>  --}}
-                        {{-- <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nom</label>
-                            <x-FormGenerator-input 
-                                type="text" 
-                                name="firstname" 
-                                value="" 
-                                id="firstname" 
-                                placeholder="votre nom..."
-                                class="form-control"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Téléphone</label>
-                            <x-FormGenerator-input 
-                                type="number" 
-                                name="phone_number" 
-                                value="" 
-                                id="phone_number" 
-                                placeholder="votre numero..."
-                                class="form-control"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Password</label>
-                            <x-FormGenerator-input 
-                                type="password" 
-                                name="password" 
-                                value="" 
-                                id="password" 
-                                placeholder="votre mot de passe..."
-                                class="form-control"
-                            />
-                        </div>
-                        <div class="col-auto">
-                            <x-FormGenerator-button type="submit" class="btn btn-primary mb-3">
-                                Ajouter
-                            </x-FormGenerator-button>
                         </div> --}}
+                        <div class="mb-3" style="border:1px solid #eeeeee">
+                            {{($firstnameField->render())}}
+                        </div> 
+                        <div class="mb-3" style="border:1px solid #eeeeee">
+                            {{($lastnameField->render())}}
+                        </div> 
                         
                         {{-- form end here --}}
                     </div>

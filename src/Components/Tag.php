@@ -19,14 +19,14 @@ class Tag
         return $this; // daisy chained
     }
 
-    public function addTag(Tag $oTag)
+    /* public function addTag(Tag $oTag)
     {
         if ($this->sContent == '')
         {
             $this->sContent = "";
         }
         $this->sContent .= $oTag->render() . "";
-    }
+    } */
 
     public function render()
     {

@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit2cbe2104bb36a285f4bace864b758dee
 {
+    public static $files = array (
+        '9ddd9da5322ceccb2945c6a0309f632f' => __DIR__ . '/../..' . '/app/helpers.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'A' => 
         array (
@@ -21,6 +25,13 @@ class ComposerStaticInit2cbe2104bb36a285f4bace864b758dee
     );
 
     public static $classMap = array (
+        'Alsace\\FormGenerator\\Components\\DataGrid' => __DIR__ . '/../..' . '/src/Components/DataGrid.php',
+        'Alsace\\FormGenerator\\Components\\PageBuilder' => __DIR__ . '/../..' . '/src/Components/PageBuilder.php',
+        'Alsace\\FormGenerator\\Components\\Tag' => __DIR__ . '/../..' . '/src/Components/Tag.php',
+        'Alsace\\FormGenerator\\Components\\Test' => __DIR__ . '/../..' . '/src/Components/Test.php',
+        'Alsace\\FormGenerator\\Controllers\\FormBuilderController' => __DIR__ . '/../..' . '/src/Controllers/FormBuilderController.php',
+        'Alsace\\FormGenerator\\Providers\\FormGeneratorServiceProvider' => __DIR__ . '/../..' . '/src/Providers/FormGeneratorServiceProvider.php',
+        'Alsace\\FormGenerator\\config\\GenerateFile' => __DIR__ . '/../..' . '/src/config/GenerateFile.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
