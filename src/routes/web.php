@@ -1,16 +1,26 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Alsace\FormGenerator\Controllers\FormBuilderController;
 use App\Src\User;
 use App\Src\Client;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
+use Alsace\FormGenerator\Controllers\FormBuilderController;
 
-Route::get("/formBuilder",[FormBuilderController::class,'index']);
 
-Route::get("/formBuilder/user",[User::class,'builder']);
-Route::get("/formBuilder/client",[Client::class,'builder']);
+Route::any('formBuilder/{variable_name}', function($variable_name){
 
-Route::get("/formBuilder/files",[Client::class,'list']);
+    $path = sprintf("\App\Src\%s", $variable_name."@");
+    $s = app_path(sprintf("\Src\%s",$variable_name.".php"));
+    //dd($s);
+    if (file_exists($s)) {
+        //return "File exist.";
+        return App::call($path . 'builder');
+    } else {
+        //return "File does not exist.";
+        abort(404);
+    }
+    
+})->where('variable_name', '.*');
 
 
 

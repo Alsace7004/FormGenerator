@@ -22,7 +22,7 @@
             $this->loadViewsFrom(__DIR__.'/../views','FormGenerator');
 
             // if 'src/helpers.php' does not work, try with 'helpers.php'
-            if (file_exists($file = app_path('src/helpers.php'))) { 
+            if (file_exists($file = app_path('Src/helpers.php'))) { 
                 require $file;
             } 
             /* if (File::exists(__DIR__ . '/helpers.php')) {

@@ -9,6 +9,8 @@
         public string $placeholder;
         public string $required;
 
+        protected $aTags = array();
+
         public function __construct()
         {
             
@@ -42,6 +44,10 @@
         }
         public function render(){
             echo "<input id='$this->id' name='$this->name' value='$this->value' class='$this->class' placeholder='$this->placeholder' required='$this->required' />";
+        }
+        public function addTag(Tag $oTag)
+        {
+            $this->aTags[] = $oTag;
         }
     }
 ?>

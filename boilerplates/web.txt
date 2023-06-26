@@ -1,0 +1,56 @@
+<?php
+
+use App\Src\User;
+use App\Src\Client;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
+use Alsace\FormGenerator\Controllers\FormBuilderController;
+
+
+/* Route::get("/formBuilder",function(){
+
+   
+}); */
+Route::any('/{variable_name}', function($variable_name){
+    $app = app();
+    //$controller = $app->make('\App\Http\Controllers\Controller'. $variable_name );
+    //$path = sprintf("App\Http\Controllers\%s", $variable_name.".php");
+    //dd($app);
+    $path = sprintf("\App\Src\%s", $variable_name."@");
+    //dd($path);
+    //$path = "App\Src\Client";
+    //dd($path);
+    //$controller = $app->make('\App\Http\Controllers\Admin');
+    //$controller = $app->make('\App\Src\Client');
+    //dd($controller);
+    //return App::call('builder');
+   return App::call($path . 'builder');
+   //return App::call('\App\Src\Client@' . 'builder');
+
+   // return $controller->callAction('builder', $parameters = array());
+    
+})->where('variable_name', '.*');
+
+//->where('variable_name', '^(User|Client|Admin)');
+/* Route::get('/{any}', function ($any) {
+    echo "wild flower :".$any;
+  })->where('any', '.*'); */
+Route::get("/formBuilder",[FormBuilderController::class,'index']);
+/*Route::get('(:any)', function($slug) {
+    $page = Page::where_slug($slug)->first();
+
+        if ( is_null($page) )
+        return Event::first('404');
+        return View::make('page')->with($page);
+});*/
+//url va changer | Class va changer | fonction sera la méme
+Route::get("/formBuilder/User",[User::class,'builder']);
+Route::get("/formBuilder/Client",[Client::class,'builder']);
+
+Route::get("/formBuilder/Files",[Client::class,'list']);
+
+
+
+
+
+?>
