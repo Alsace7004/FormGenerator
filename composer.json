@@ -3,7 +3,7 @@
     "description": "Un package pour generer des formulaires",
     "autoload": {
         "files": [
-            "app/helpers.php"
+            "src/helpers.php"
         ],
         "psr-4": {
             "Alsace\\FormGenerator\\": "src/"

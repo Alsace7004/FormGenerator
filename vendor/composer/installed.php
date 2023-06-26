@@ -3,7 +3,7 @@
         'name' => 'alsace/form-generator',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'a9f6a0277afc05f917646a4c9d539961eafc778a',
+        'reference' => 'a501c23996ae680186eda89ea635098e1383a9f8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'alsace/form-generator' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'a9f6a0277afc05f917646a4c9d539961eafc778a',
+            'reference' => 'a501c23996ae680186eda89ea635098e1383a9f8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

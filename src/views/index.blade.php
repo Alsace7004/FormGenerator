@@ -63,10 +63,28 @@
     </head>
     <body class="antialiased">
         <div class="">
+            <div>
+                        
+                @php
+                    $path = dirname(__DIR__,3).DIRECTORY_SEPARATOR."app".DIRECTORY_SEPARATOR."Src";
+                    //$path = dirname(__DIR__).DIRECTORY_SEPARATOR."Src";
+                    $files = scandir($path);
+                    $files = array_diff(scandir($path), array('.', '..'));
+                    $files = array_values(array_diff(scandir($path), array('..', '.')));
+                    //dd($files);
+                @endphp
+                 
+            </div>
+
             {{-- sidebar begin here --}}
             <div class="sidebar">
                 <ul class="side_links">
-                    <li>
+                    @foreach ($files as $item)
+                        <li>
+                            <a href="{{$item}}">{{$item}}</a>
+                        </li>
+                    @endforeach
+                    {{-- <li>
                         <a href="#Application">Application</a>
                     </li>
                     <li>
@@ -80,7 +98,7 @@
                     </li>
                     <li>
                         <a href="#Components">Components</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             {{-- sidebar end here --}}
@@ -88,13 +106,7 @@
                 <div class="main">
                     <h4>welcome on Form{{-- on FormBuilder --}}</h4><br>
                     {{-- <h5>{{$my_message}}</h5> --}}
-                    <div>
-                        @php
-                           $email = myowntest();
-                        @endphp
-                        {{$email}}
-                         
-                    </div>
+                    
                     
                     <div class="container">
                         <h5></h5>
