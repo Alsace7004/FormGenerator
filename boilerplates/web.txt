@@ -51,6 +51,18 @@ Route::get("/formBuilder/Files",[Client::class,'list']);
 
 
 
+foreach($heads as $head){
+            $table .= "<tr>";
+                $table .= "<th>".$head."</th>";
+            $table .= "</tr>";
+        }
 
+        $table .= "<thead>";
+                    $table .= "<tr>";
+                        $table .= "<th>".'Nom'."</th>";
+                        $table .= "<th>".'Prenom'."</th>";
+                        $table .= "<th>".'Contact'."</th>";
+                    $table .= "</tr>";
+                $table .= "</thead>";
 
 ?>
