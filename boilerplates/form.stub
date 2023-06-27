@@ -26,6 +26,7 @@ class {{ class }}
     }
     public function list()
     {
-        
+        $data =  "Liste des {{class}}s !!!";
+        return view('FormGenerator::index',compact('data'));
     }
 }

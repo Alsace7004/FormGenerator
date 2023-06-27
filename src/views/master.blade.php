@@ -4,15 +4,26 @@
 @section('content') --}}
 
 <div class="container">
-    <h5>Part</h5>
     
-    @foreach ($arrayobj as $k=>$item)
-        @foreach ($item as $x=>$it)
-            <div class="mb-3" style="border:1px solid #eeeeee">
-                {{($item[$x]->render())}}
-            </div> 
+
+    @if(isset($arrayobj))
+        <h6>Formulaire d'ajout</h6>
+        @foreach ($arrayobj as $k=>$item)
+            @foreach ($item as $x=>$it)
+                <div class="mb-3" style="border:1px solid #eeeeee">
+                    {{($item[$x]->render())}}
+                </div> 
+            @endforeach
         @endforeach
-    @endforeach
+    @endif
+
+    @if(isset($data))
+        <h6>Liste</h6>
+        <div class="mb-3" style="border:1px solid #eeeeee">
+            {{($data)}}
+        </div> 
+    @endif
+    
     {{-- 
         <div class="mb-3" style="border:1px solid #eeeeee">
             {{($firstnameField->render())}}

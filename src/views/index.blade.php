@@ -63,7 +63,10 @@
     </head>
     <body class="antialiased">
         <div class="">
-            
+            @php
+                    /* $gf = hello(); */ /* working, check the package ServiceProvider file */
+                   // check_src_folder_files();
+            @endphp
 
             {{-- sidebar begin here --}}
             @include('FormGenerator::sidebar')

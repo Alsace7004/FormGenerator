@@ -13,7 +13,7 @@
         },$files);
         //dd($files)
         //An elegant way to prefix array values (PHP 5.3+):
-        $prefixed_array = preg_filter('/^/', '/formBuilder/', $files);
+        $prefixed_array = preg_filter('/^/', '/formBuilder/namespace=', $files);
         # dump
         //dd($prefixed_array);
         //Mapped Array
@@ -32,6 +32,9 @@
                 <a href="{{$key}}">{{$item}}</a>
             </li>
         @endforeach
+        {{-- <li>
+            <a href="/formBuilder?namespace=Files">Files</a>
+        </li> --}}
         {{-- <li>
             <a href="/formBuilder/Files">Application</a>
         </li>

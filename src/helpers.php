@@ -10,9 +10,19 @@ if(! function_exists('myowntest')){
 
 if(! function_exists('hello')){
     function hello(){
-        echo 'This is my own test';
+        echo 'am from the hello function';
     }
 }
+if(! function_exists('check_src_folder_files')){
+    function check_src_folder_files(){
+        $path = dirname(__DIR__,4).DIRECTORY_SEPARATOR."app".DIRECTORY_SEPARATOR."Src";
+        //dd($path);
+        $files = scandir($path);
+        $files = array_diff(scandir($path), array('.', '..'));
+        $files = array_values(array_diff(scandir($path), array('..', '.')));
+        dd($files);
+    }
+}   
 
 if(! function_exists('files_list')){
     function file_list(){

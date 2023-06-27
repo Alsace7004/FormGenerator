@@ -1,0 +1,8 @@
+
+localhost:8000?namespace=Approvisionneur        ==> fonction list()
+localhost:8000?namespace=Client                 ==> fonction list()
+localhost:8000?namespace=Droit                  ==> fonction list()
+localhost:8000?namespace=Fournisseur            ==> fonction list()
+localhost:8000?namespace=Mais                   ==> fonction list()
+localhost:8000?namespace=Role                   ==> fonction list()
+localhost:8000?namespace=User                   ==> fonction list()

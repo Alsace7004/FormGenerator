@@ -4,9 +4,6 @@
 
     namespace Alsace\FormGenerator\Providers;
     use Alsace\FormGenerator\config\GenerateFile;
-    use Alsace\FormGenerator\View\Components\Alert;
-    use Alsace\FormGenerator\View\Components\Input;
-    use Alsace\FormGenerator\View\Components\Button;
     use Illuminate\Support\ServiceProvider;
     use Illuminate\Support\Facades\File;
 
@@ -22,13 +19,11 @@
             $this->loadViewsFrom(__DIR__.'/../views','FormGenerator');
 
             // if 'src/helpers.php' does not work, try with 'helpers.php'
-            if (file_exists($file = app_path('Src/helpers.php'))) { 
-                require $file;
-            } 
-            /* if (File::exists(__DIR__ . '/helpers.php')) {
-              
-                require __DIR__ . '/helpers.php';
-            } */
+            $files = dirname(__DIR__).DIRECTORY_SEPARATOR."helpers.php";
+            //dd($files);
+            if (file_exists($files)) { 
+                require $files;
+            }
         }
 
         /* public function register(){
