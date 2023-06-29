@@ -4,16 +4,18 @@ namespace Alsace\FormGenerator\Components;
 class DataGrid{
     public string $input_attribut;
     public string $db_table_attribute; //column
+    protected array $data = []; //column
     protected $sAttributes= [];
 
     public array $fields = []; // filter
     public bool $editable; //editable
     public int $nombre; //editable
+    private $table;
 
-    public static function make(){
-        
-        echo "am the make method";
-    }
+    public function __constructor() {
+        // Set HTML code to empty string
+        $this->table = "";
+    }    
 
     public function column(string $input_attribut,string $db_table_attribute){
         $this->sAttributes += [$input_attribut=>$db_table_attribute];
@@ -33,70 +35,36 @@ class DataGrid{
         return $this;
     }
 
-    public function renderTable(){
-        $datas = [
-            [
-                'firstname' =>'Ola',
-                'lastname'  =>'Mide',
-                'email'     =>'ola@mide.com',
-                'password'  =>'9045',
-                'password'  =>'9045',
-            ],
-            [
-                'firstname' =>'Fola',
-                'lastname'  =>'Shade',
-                'email'     =>'Fola@Shade.com',
-                'password'  =>'1685'
-            ],
-            [
-                'firstname' =>'Akin',
-                'lastname'  =>'Tola',
-                'email'     =>'Akin@Tola.com',
-                'password'  =>'1774'
-            ],
-            [
-                'firstname' =>'Tinu',
-                'lastname'  =>'Bu',
-                'email'     =>'Tinu@Bu.com',
-                'password'  =>'1545'
-            ],
-            [
-                'firstname' =>'Ogun',
-                'lastname'  =>'Mide',
-                'email'     =>'Ogun@Kemi.com',
-                'password'  =>'1829'
-            ],
-            [
-                'firstname' =>'Toba',
-                'lastname'  =>'Shade',
-                'email'     =>'Toba@Shade.com',
-                'password'  =>'4574'
-            ],
-        ];
+    public function datas(array $data){
+        $this->data = $data;
+        return $this;
+    }
 
-        $table = "<table class='table table-bordered table-stripped table-hovered'>";
+    public function renderTable(){
+        
+
+        $this->table = "<table class='table table-bordered table-stripped table-hovered'>";
                 /* -------------------thead-begin------------------ */
-                $table .= "<thead>";
-                    $table .= "<tr>";
+                $this->table .= "<thead>";
+                    $this->table .= "<tr>";
                         foreach($this->sAttributes as $k=> $head){
-                            $table .= "<th>".$k."</th>";
+                            $this->table .= "<th>".$k."</th>";
                         }
-                    $table .= "</tr>";
-                $table .= "</thead>";
+                    $this->table .= "</tr>";
+                $this->table .= "</thead>";
                 /* -------------------thead-end------------------ */
                 /* -------------------tbody-begin------------------ */
-                $table .= "<tbody>";
-                    foreach($datas as $k=> $item){
-
-                        $table .= "<tr>";
+                $this->table .= "<tbody>";
+                    foreach($this->data as $k=> $item){
+                        $this->table .= "<tr>";
                             foreach($this->sAttributes as $head){
-                                $table .= "<td>".$item[$head]."</td>";
+                                $this->table .= "<td>".$item[$head]."</td>";
                             }
-                        $table .= "</tr>";
+                        $this->table .= "</tr>";
                     }
-                $table .= "</tbody>";
+                $this->table .= "</tbody>";
                 /* -------------------tbody-end------------------- */
-        $table .= "</table>";
+        $this->table .= "</table>";
 
 
         /* $table = "
@@ -145,7 +113,8 @@ class DataGrid{
         "; */
 
         //dd($table);
-        return $table;
+        //echo $table;
+        echo $this->table;
     }
 }
 

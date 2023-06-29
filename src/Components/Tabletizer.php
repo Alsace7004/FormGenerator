@@ -18,7 +18,7 @@
 	| =======
 	|
 	| Note: For this example you need one array with name $var.
-  |
+  	|
 	| $table = new Tabletizer();
 	| echo $table->fromArray($var);
 	|

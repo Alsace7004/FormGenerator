@@ -17,12 +17,15 @@
         @endforeach
     @endif
 
+
     @if(isset($data))
         <h6>Liste</h6>
         <div class="mb-3" style="border:1px solid #eeeeee">
-            {{($data)}}
-        </div> 
+            {{($data->renderTable())}}
+        </div>
     @endif
+
+    
     
     {{-- 
         <div class="mb-3" style="border:1px solid #eeeeee">

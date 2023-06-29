@@ -10,7 +10,7 @@ use Alsace\FormGenerator\Controllers\FormBuilderController;
 Route::get('formBuilder/namespace={variable_name}', function($variable_name){
 
     $path = sprintf("\App\Src\%s", $variable_name."@");
-    $s = app_path(sprintf("\Src\%s",$variable_name.".php"));
+    $s    = app_path(sprintf("\Src\%s",$variable_name.".php"));
     if (file_exists($s)) {
         return App::call($path . 'list');
     } else {
