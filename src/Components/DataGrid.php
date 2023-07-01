@@ -2,15 +2,15 @@
 namespace Alsace\FormGenerator\Components;
 
 class DataGrid{
-    public string $input_attribut;
-    public string $db_table_attribute; //column
-    protected array $data = []; //column
-    protected $sAttributes= [];
+    public      string  $input_attribut;
+    public      string  $db_table_attribute; //column
+    protected   array   $data = [];          //column
+    protected           $sAttributes= [];
 
-    public array $fields = []; // filter
-    public bool $editable; //editable
-    public int $nombre; //editable
-    private $table;
+    public      array   $fields = [];        //filter
+    public      bool    $editable;           //editable
+    public      int     $nombre;             //editable
+    private             $table;
 
     public function __constructor() {
         // Set HTML code to empty string
@@ -36,8 +36,16 @@ class DataGrid{
     }
 
     public function datas(array $data){
-        $this->data = $data;
+        $data_converted_to_object = $this->convert_array_to_object($data);
+        $this->data = $data_converted_to_object;
         return $this;
+    }
+    //convert array to object
+    private function convert_array_to_object($arr){
+        foreach($arr as $r){
+            $object[] = (object) $r;
+        }
+        return $object;
     }
 
     public function renderTable(){
@@ -55,10 +63,17 @@ class DataGrid{
                 /* -------------------thead-end------------------ */
                 /* -------------------tbody-begin------------------ */
                 $this->table .= "<tbody>";
+                //dd($this->data);
                     foreach($this->data as $k=> $item){
                         $this->table .= "<tr>";
+                        //dd($this->sAttributes);
                             foreach($this->sAttributes as $head){
-                                $this->table .= "<td>".$item[$head]."</td>";
+                              
+                                //if(is_array($this->sAttributes)){
+                                 //   $this->table .= "<td>".$item[$head]."</td>"; //Array
+                               // }else{
+                                    $this->table .= "<td>".$item->$head."</td>"; //Object
+                                //}
                             }
                         $this->table .= "</tr>";
                     }

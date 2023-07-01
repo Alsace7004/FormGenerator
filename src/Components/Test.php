@@ -49,5 +49,9 @@
         {
             $this->aTags[] = $oTag;
         }
+
+        public function Button(){
+            
+        }
     }
 ?>

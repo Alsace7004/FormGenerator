@@ -7,7 +7,7 @@
     
 
     @if(isset($arrayobj))
-        <h6>Formulaire d'ajout</h6>
+        <h6>Formulaire d'ajout {{repo_file_name_on_builder()}}</h6>
         @foreach ($arrayobj as $k=>$item)
             @foreach ($item as $x=>$it)
                 <div class="mb-3" style="border:1px solid #eeeeee">
@@ -16,28 +16,19 @@
             @endforeach
         @endforeach
     @endif
-
+       
 
     @if(isset($data))
-        <h6>Liste</h6>
+        <div class="col-auto d-flex justify-content-between align-items-center">
+            <h6>Liste {{repo_file_name_on_list()}}</h6> 
+            <a class="btn btn-primary btn-sm mb-3" href="create={{repo_file_name_on_list()}}">Ajouter {{repo_file_name_on_list()}}</a>
+        </div>  
         <div class="mb-3" style="border:1px solid #eeeeee">
             {{($data->renderTable())}}
         </div>
     @endif
 
-    
-    
-    {{-- 
-        <div class="mb-3" style="border:1px solid #eeeeee">
-            {{($firstnameField->render())}}
-        </div> 
-        <div class="mb-3" style="border:1px solid #eeeeee">
-            {{($lastnameField->render())}}
-        </div>
-        <div class="col-auto">
-            {{($SubmitButton->render())}}
-        </div>  
-    --}}
+
     
     {{-- form end here --}}
 </div>

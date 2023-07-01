@@ -37,6 +37,26 @@ if(! function_exists('files_list')){
     }
 }
 
+//Working helper function
+//get current repo file name on list
+if(! function_exists('repo_file_name_on_list')){
+    function repo_file_name_on_list(){
+        $url = $_SERVER['REQUEST_URI'];
+        $token = "=";
+        $result = substr($url, 22 + strlen($token)); 
+        return $result;
+    }
+}
+//get current repo file name on builder
+if(! function_exists('repo_file_name_on_builder')){
+    function repo_file_name_on_builder(){
+        $url = $_SERVER['REQUEST_URI'];
+        $token = "=";
+        $result = substr($url, 19 + strlen($token)); 
+        return $result;
+    }
+}
+
 
 
 ?>

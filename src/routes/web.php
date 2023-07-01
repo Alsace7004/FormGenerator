@@ -4,15 +4,26 @@ use App\Src\User;
 use App\Src\Client;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use Alsace\FormGenerator\Controllers\FormBuilderController;
 
-
+//list
 Route::get('formBuilder/namespace={variable_name}', function($variable_name){
 
     $path = sprintf("\App\Src\%s", $variable_name."@");
     $s    = app_path(sprintf("\Src\%s",$variable_name.".php"));
     if (file_exists($s)) {
         return App::call($path . 'list');
+    } else {
+        abort(404);
+    }
+    
+})->where('variable_name', '.*');
+//builder
+Route::get('formBuilder/create={variable_name}', function($variable_name){
+
+    $path = sprintf("\App\Src\%s", $variable_name."@");
+    $s    = app_path(sprintf("\Src\%s",$variable_name.".php"));
+    if (file_exists($s)) {
+        return App::call($path . 'builder');
     } else {
         abort(404);
     }

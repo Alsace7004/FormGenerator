@@ -3,42 +3,29 @@
 
     class PageBuilder{
 
-        public string $id;
-        public string $name;
-        public string $value;
-        public string $class;
-        public string $placeholder;
-        public string $required;
-        public string $bind;
+        private $fields     = [];
+        private $from       = [];
+        private $conditions = [];
 
-        
-
-        public function id(string $id){
-            $this->id = $id;
+        //select
+        public function select(string ...$select){
+            $this->fields = $select;
             return $this;
         }
-        public function name(string $name){
-            $this->name = $name;
+        //from
+        public function from(string $table, ?string $aliase=null){
+            if($aliase === null){
+                $this->from[] = $table;
+            }else{
+                $this->from[] = "$table as $aliase";
+            }
             return $this;
         }
-        public function value(string $value){
-            $this->value = $value;
-            return $this;
-        }
-        public function class(string $class){
-            $this->class = $class;
-            return $this;
-        }
-        public function placeholder(string $placeholder){
-            $this->placeholder = $placeholder;
-            return $this;
-        }
-        public function required(string $required){
-            $this->required = $required;
-            return $this;
-        }
-        public function bind(string $bind){
-            $this->bind = $bind;
+        //where
+        public function where(string ...$where){
+            foreach($where as $arg){
+                $this->conditions[] = $arg;
+            }
             return $this;
         }
     }
