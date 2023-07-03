@@ -4,107 +4,68 @@
 class Tag
 {
     protected $sTag;
-    protected $sAttributes;
-    protected $sContent;
+    protected $sDisplayText;
+    //Mine
+    public string $id;
+    public string $name;
+    public string $class='';
+    public string $type='';
+    public string $placeholder;
+    public string $required='';
 
-    public function __construct($sTag='', $sContent = '')
+    public function __construct($sTag,$sDisplayText = null)
     {
         $this->sTag = $sTag;
-        $this->sContent = $sContent;
+        $this->sDisplayText = $sDisplayText;
     }
-
-    public function addAttribute($sName, $mValue)
+    // Factory pattern.
+    public static function get($sTag,$sDisplayText = null)
     {
-        $this->sAttributes .= "{$sName}='{$mValue}' ";
-        return $this; // daisy chained
+        return new Tag($sTag,$sDisplayText);
     }
-
-    /* public function addTag(Tag $oTag)
-    {
-        if ($this->sContent == '')
-        {
-            $this->sContent = "";
-        }
-        $this->sContent .= $oTag->render() . "";
-    } */
-
+    /************************************************************************/
+    public function id(string $id){
+        $this->id = $id;
+        return $this;
+    }
+    public function name(string $name){
+        $this->name = $name;
+        return $this;
+    }
+    public function type(string $type){
+        $this->type = $type;
+        return $this;
+    }
+    public function placeholder(string $placeholder){
+        $this->placeholder = $placeholder;
+        return $this;
+    }
+    public function required(string $required){
+        $this->required = $required;
+        return $this;
+    }
+    public function class(string $class){
+        $this->class = $class;
+        return $this;
+    }
+    /************************************************************************/
+    //renders
     public function render()
     {
-        $temp = trim("{$this->sTag} {$this->sAttributes}");
-        if ($this->sContent == '')
+
+        if ($this->sDisplayText == '')
         {
-            echo "<{$temp} />";
-        }else
-        echo "<{$temp}>{$this->sContent}</{$this->sTag}>";
+            return "<$this->sTag 
+                            id='$this->id' 
+                            name='$this->name' 
+                            class='$this->class' 
+                            type='$this->type' 
+                            required='$this->required'
+                            placeholder='$this->placeholder' 
+                    />";
+        } else {
+            return "<$this->sTag id='$this->id' name='$this->name'class='$this->class' >$this->sDisplayText</$this->sTag>";
+        }
     }
-    /*******************************************************/
-        
-    /*******************************************************/
 }
-
-
-
-/* $usernameField = new Tag('input');
-$usernameField->addAttribute('type', 'text')
-                ->addAttribute('name', 'username')
-                ->addAttribute('id', 'username_id')
-                ->addAttribute('value', '')
-                ->addAttribute('class', 'form-control')
-                ->addAttribute('placeholder', 'votre nom');
-
-$firstnameField = new Tag('input');
-$firstnameField->addAttribute('type', 'text')
-                ->addAttribute('name', 'firstname')
-                ->addAttribute('id', 'firstname_id')
-                ->addAttribute('value', '')
-                ->addAttribute('class', 'form-control')
-                ->addAttribute('placeholder', 'votre firstname');
-
-$lastnameField = new Tag('input');
-$lastnameField->addAttribute('type', 'text')
-                ->addAttribute('name', 'lastname')
-                ->addAttribute('id', 'lastname_id')
-                ->addAttribute('value', '')
-                ->addAttribute('class', 'form-control')
-                ->addAttribute('placeholder', 'votre lastname');
-
-$passwordField = new Tag('input');
-$passwordField->addAttribute('type', 'password')
-                ->addAttribute('name', 'password')
-                ->addAttribute('id', 'password_id')
-                ->addAttribute('value', '')
-                ->addAttribute('class', 'form-control')
-                ->addAttribute('placeholder', 'votre mot de passe');
-
-$buttonField = new Tag('button','Envoyer');
-$buttonField->addAttribute('type', 'button')
-                ->addAttribute('name', 'password')
-                ->addAttribute('id', 'password_id')
-                ->addAttribute('value', 'ok');
-
-
-
-echo $usernameField->render();
-
-echo $firstnameField->render();
-
-echo $lastnameField->render();
-
-echo $passwordField->render();
-
-echo $buttonField->render(); */
-
-
-
-
-
-/* 
-$table = new \CodeIgniter\View\Table();
-
-$query = $db->query('SELECT * FROM my_table');
-
-echo $table->generate($query);
-*/
-
-
 ?>

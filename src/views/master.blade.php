@@ -16,6 +16,13 @@
             @endforeach
         @endforeach
     @endif
+
+    @if(isset($oForm))
+        <h6>Formulaire d'ajout {{repo_file_name_on_builder()}}</h6>
+                <div class="mb-3" style="border:1px solid #eeeeee">
+                    {{($oForm->render())}}
+                </div> 
+    @endif
        
 
     @if(isset($data))
