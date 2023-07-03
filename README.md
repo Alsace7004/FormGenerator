@@ -4,8 +4,25 @@ Un package pour générer des formulaires
 php artisan make:repo nom_du_repo
 # Exemple Pour generer un fichier repo
 Ex: php artisan make:repo User
+# Exemple de fonction builder
+Voici ici un example de création de formulaire:
 
-On Ubuntu, you can install these using:
+        $firstname = Tag::get('input')
+                            ->id('id_firstname')
+                            ->name('firstname')
+                            ->class('form-control mb-3')
+                            ->required('required')
+                            ->placeholder('Votre firstname please...');
+        $lastname =  Tag::get('input')
+                            ->id('id_lastname')
+                            ->name('lastname')
+                            ->class('form-control mb-3')
+                            ->placeholder('Votre lastname please...');
+        $btn = Tag::get('button','valider')->id('id_button')->name('button_name')->class('btn btn-primary');
 
-    sudo apt install -y pkg-config build-essential autoconf bison re2c \
-                        libxml2-dev libsqlite3-dev
+        $oForm = new Form('/users/login/');
+        $oForm->addTag($firstname);
+        $oForm->addTag($lastname);
+        $oForm->addTag($btn);
+
+        return view('FormGenerator::index',compact('oForm'));
