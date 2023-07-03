@@ -1,10 +1,10 @@
 # FormGenerator
 Un package pour générer des formulaires
-# Pour generer un fichier repo
+## Pour generer un fichier repo
 php artisan make:repo nom_du_repo
-# Exemple Pour generer un fichier repo
+### Exemple Pour generer un fichier repo
 Ex: php artisan make:repo User
-# Exemple de fonction builder
+#### Exemple de fonction builder
 Voici ici un example de création de formulaire:
 
         $firstname = Tag::get('input')
@@ -26,3 +26,7 @@ Voici ici un example de création de formulaire:
         $oForm->addTag($btn);
 
         return view('FormGenerator::index',compact('oForm'));
+
+##### Affichage au niveau de la vue
+
+            {{($oForm->render())}}
