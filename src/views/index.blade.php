@@ -63,10 +63,7 @@
     </head>
     <body class="antialiased">
         <div class="">
-            @php
-                    /* $gf = hello(); */ /* working, check the package ServiceProvider file */
-                   // check_src_folder_files();
-            @endphp
+
 
             {{-- sidebar begin here --}}
             @include('FormGenerator::sidebar')
@@ -74,9 +71,7 @@
             <div class="content">
                 <div class="main">
                     <h4>welcome on Form{{-- on FormBuilder --}}</h4><br>
-                    {{-- <h5>{{$my_message}}</h5> --}}
                     {{-- #######################Begin Dynamic Part #######################--}}
-                        {{-- @yield('content') --}}
                         @include('FormGenerator::master')
                     {{-- #######################End Dynamic Part #######################--}}
                 </div>
