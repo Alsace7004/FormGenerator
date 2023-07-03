@@ -7,6 +7,8 @@ Un package pour générer des formulaires
 #### Exemple de fonction builder
 Voici ici un example de création de formulaire:
 
+    public function builder()
+    {
         $firstname = Tag::get('input')
                             ->id('id_firstname')
                             ->name('firstname')
@@ -26,7 +28,8 @@ Voici ici un example de création de formulaire:
         $oForm->addTag($btn);
 
         return view('FormGenerator::index',compact('oForm'));
+    }
 
 #### Affichage au niveau de la vue
 
-            {{($oForm->render())}}
+        {{($oForm->render())}}
